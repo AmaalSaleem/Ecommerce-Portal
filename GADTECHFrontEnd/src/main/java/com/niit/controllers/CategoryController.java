@@ -21,7 +21,7 @@ public class CategoryController
 	    CategoryDao categoryDAO;
 	     
 	     
-	   @RequestMapping(value="AddCategory",method=RequestMethod.POST)
+	   @RequestMapping(value="/AddCategory",method=RequestMethod.POST)
 	    public String addCategory(@RequestParam("catgId") int catgId,@RequestParam("catgName") String catgName,@RequestParam("catgDescrip") String catgDescrip,Model m)
 	    {
 	        Category category=new Category();
@@ -34,7 +34,46 @@ public class CategoryController
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
 	         
-	        return "Category";
+	        return "redirect:/category";
+
+	    }
+	   
+	   @RequestMapping(value="/category",method=RequestMethod.GET)
+       public String showCategory(Model m)
+       {
+           Category category=new Category();
+           m.addAttribute(category);
+            
+           List<Category> listCategory=categoryDAO.retrieveCategory();
+           m.addAttribute("categoryList",listCategory);
+           return "Category";
+       }
+	   
+	   
+	   @RequestMapping(value="deleteCategory/{catgId}",method=RequestMethod.GET)
+	    public String deleteCategory(@PathVariable("catgId")int catgId,Model m)
+	    {
+	        Category category=categoryDAO.getCategory(catgId);
+	        categoryDAO.deleteCategory(category);
+	        List<Category> listCategory=categoryDAO.retrieveCategory();
+	        m.addAttribute("categoryList",listCategory);
+	         
+	        Category category1=new Category();
+	        m.addAttribute(category1);
+	         
+	        return "redirect:/category";
+	    }
+	   
+	   
+	   @RequestMapping(value="updateCategory/{catgId}",method=RequestMethod.GET)
+	    public String updateCategory(@PathVariable("catgId") int catgId,Model m)
+	    {
+	        Category category=categoryDAO.getCategory(catgId);
+	        m.addAttribute(category);
+	         
+	        List<Category> listCategory=categoryDAO.retrieveCategory();
+	        m.addAttribute("categoryList",listCategory);
+	        return "updateCategory";
 	    }
 	     
 	   
