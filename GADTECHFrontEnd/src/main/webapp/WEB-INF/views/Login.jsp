@@ -5,224 +5,232 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
 </head>
-<style>
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-body {
-    font-family: 'Raleway',sans-serif;
-    position: relative;
-    /*background: rgba(0, 0, 0, 0) url("../img/ptn.png") repeat scroll 0 0;*/
-}
-
-.in-page {
-    min-height: 520px;
-}
-
-.main {
-    position: relative;
-}
-
-a {
-    color: #1b5a7c;
-}
-
-a:hover, a:focus {
-    color: #1b5a7c;
-}
-
-.btn-cyan {
-    background-color: #1b5a7c;
-    color: #fff;
-}
-
-.btn-cyan:hover {
-    color: #fff;
-    opacity: 0.9;
-}
-
-.form-control:focus {
-    border-color: #1b5a7c;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(24, 204, 162, 0.6);
-    outline: 0 none;
-}
-
-.min-height {
-    min-height: 380px;
-}
-
-.login-screen {
-    background-image: url(https://www.squiz.net/__public/Systems/Perspective/FileCache/1-32000/465/prop/header-bg-image.jpg?t=1472431690);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+<style type="text/css">
+body
+{
+    background: url('./resources/background-login.jpg') fixed;
     background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    padding: 0;
+    margin: 0;
 }
 
-.login-screen:before {
-    content: "";
-    background: rgba(0,0,0, 0.5);
-    position: absolute;
+.wrap
+{
     width: 100%;
     height: 100%;
+    min-height: 100%;
+    position: absolute;
     top: 0;
     left: 0;
+    z-index: 99;
 }
 
-.login-center {
-    text-align: left;
+p.form-title
+{
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
-.login {
-    width: 320px;
-    color: #fff;
+form
+{
+    width: 250px;
+    margin: 0 auto;
 }
 
-.login .login-form {
-    text-align: left;
+form.login input[type="text"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #FFFFFF;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+    outline: 0;
 }
 
-.login label {
-    color: #fff;
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
 }
 
-.login-form .input-group .form-control {
-    background: none;
-    height: 44px;
-    color: #ddd;
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
 }
 
-.login-form .input-group .input-group-addon {
-    background: none;
+form.login .remember-forgot
+{
+    float: left;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+form.login .forgot-pass-content
+{
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
 }
 
-.login-form .input-group .input-group-addon .glyphicon {
-    color: #1b5a7c;
+form.login a
+{
+    transition: color 0.5s ease;
 }
 
-.login-form .input-group .form-control::-moz-placeholder {
-    color: #fff;
-    opacity: 0.3;
+form.login a:hover
+{
+    color: #2ecc71;
 }
 
-.login .sign-btn input.btn {
-    background: #1b5a7c;
-    border-color: #1b5a7c;
-    color: #fff;
-    width: 180px;
+.pr-wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
 }
 
-.login .sign-btn a {
-    text-decoration: none;
+.show-pass-reset
+{
+    display: block !important;
 }
 
-.login .checkbox {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.pass-reset
+{
+    margin: 0 auto;
+    width: 250px;
+    position: relative;
+    margin-top: 22%;
+    z-index: 999;
+    background: #FFFFFF;
+    padding: 20px 15px;
 }
 
-.login .forgot {
-    display: inline-block;
-    margin: 20px 0;
+.pass-reset label
+{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 15px;
 }
+
+.pass-reset input[type="email"]
+{
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #000000;
+    outline: 0;
+}
+
+.pass-reset input[type="submit"]
+{
+    width: 100%;
+    border: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.pass-reset input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+
 </style>
-<body class="main">
-
-<div class="login-screen"></div>
-    <div class="login-center">
-        <div class="container min-height" style="margin-top: 20px;">
-        	<div class="row">
-                <div class="col-xs-4 col-md-offset-8">
-                    <div class="login" id="card">
-                    	<div class="front signin_form"> 
-                        <p>Login Your Account</p>
-                          <form class="login-form">
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <input type="email" class="form-control" placeholder="Type your email">
-                                      <span class="input-group-addon">
-                                          <i class="glyphicon glyphicon-user"></i>
-                                      </span>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <input type="password" class="form-control" placeholder="Type your password">
-                                      <span class="input-group-addon">
-                                          <i class="glyphicon glyphicon-lock"></i>
-                                      </span>
-                                  </div>
-                              </div>
-                              <div class="checkbox">
-                              <label><input type="checkbox">Remember me next time.</label>
-                              </div>
-                              
-                              <div class="form-group sign-btn">
-                                  <input type="submit" class="btn" value="Log in">
-                                  <p><a href="#" class="forgot">Can't access your account?</a></p>
-                                  <p><strong>New to TimeInfo?</strong><br><a href="#" id="flip-btn" class="signup signup_link">Sign up for a new account</a></p>
-                              </div>
-                          </form>
+<body>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.forgot-pass').click(function(event) {
+      $(".pr-wrap").toggleClass("show-pass-reset");
+    }); 
+    
+    $('.pass-reset-submit').click(function(event) {
+      $(".pr-wrap").removeClass("show-pass-reset");
+    }); 
+});
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Enter the email you signed up with</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    Sign In</p>
+                <form class="login">
+                <input type="text" placeholder="Username" />
+                <input type="password" placeholder="Password" />
+                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                <div class="remember-forgot">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" />
+                                    Remember Me
+                                </label>
+                            </div>
                         </div>
-                        <div class="back signup_form" style="opacity: 0;"> 
-                          <p>Sign Up for Your New Account</p>
-                          <form class="login-form">
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <input type="text" class="form-control" placeholder="Username">
-                                      <span class="input-group-addon">
-                                          <i class="glyphicon glyphicon-user"></i>
-                                      </span>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <input type="text" class="form-control">
-                                  <span class="input-group-btn"><button type="button" class="btn btn-cyan"><span class="fa fa-refresh"></span></button></span>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <input type="password" class="form-control" placeholder="Confirm Password">
-                                      <span class="input-group-addon">
-                                          <i class="glyphicon glyphicon-lock"></i>
-                                      </span>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group">
-                                      <input type="email" class="form-control" placeholder="Email">
-                                      <span class="input-group-addon">
-                                          <i class="glyphicon glyphicon-envelope"></i>
-                                      </span>
-                                  </div>
-                              </div>
-                              
-                              <div class="form-group sign-btn">
-                                  <input type="submit" class="btn" value="Sign up">
-                                  <br><br>
-                                  <p>You have already Account So <a href="#" id="unflip-btn" class="signup">Log in</a></p>
-                              </div>
-                          </form>
+                        <div class="col-md-6 forgot-pass-content">
+                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Flip/1.0.18/jquery.flip.js"></script>
-    
-    </body>
+</div>
+
+</body>
 </html>

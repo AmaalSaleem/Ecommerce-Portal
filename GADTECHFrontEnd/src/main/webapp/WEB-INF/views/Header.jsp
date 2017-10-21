@@ -33,7 +33,7 @@
                         <li><a href="supplier">Supplier</a></li>
                         <li><a href="#">Product</a></li>
                         <li><a href="register">Sign Up</a></li>
-       					 <li><a href="login">Log In</a></li>
+       					 <li><a href="login">Sign In</a></li>
                        
                     </ul>
      

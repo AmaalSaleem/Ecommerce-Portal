@@ -5,208 +5,158 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
- body {
-  font-family: "Open Sans", sans-serif;
-  height: 100vh;
-  background: url("./resources/business-gadgets.jpg") 50% fixed;
-  background-size: cover;
-}
 
-@keyframes spinner {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(359deg);
-  }
-}
-* {
-  box-sizing: border-box;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-  background: rgba(4, 40, 68, 0.85);
-}
-
-.login {
-  border-radius: 2px 2px 5px 5px;
-  padding: 10px 20px 20px 20px;
-  width: 90%;
-  max-width: 320px;
-  background: #ffffff;
-  position: relative;
-  padding-bottom: 80px;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
-}
-.login.loading button {
-  max-height: 100%;
-  padding-top: 50px;
-}
-.login.loading button .spinner {
-  opacity: 1;
-  top: 40%;
-}
-.login.ok button {
-  background-color: #8bc34a;
-}
-.login.ok button .spinner {
-  border-radius: 0;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  height: 20px;
-  animation: none;
-  transform: rotateZ(-45deg);
-}
-.login input {
-  display: block;
-  padding: 15px 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid #ddd;
-  transition: border-width 0.2s ease;
-  border-radius: 2px;
-  color: #ccc;
-}
-.login input + i.fa {
-  color: #fff;
-  font-size: 1em;
-  position: absolute;
-  margin-top: -47px;
-  opacity: 0;
-  left: 0;
-  transition: all 0.1s ease-in;
-}
-.login input:focus {
-  outline: none;
-  color: #444;
-  border-color: #2196F3;
-  border-left-width: 35px;
-}
-.login input:focus + i.fa {
-  opacity: 1;
-  left: 30px;
-  transition: all 0.25s ease-out;
-}
-.login a {
-  font-size: 0.8em;
-  color: #2196F3;
-  text-decoration: none;
-}
-.login .title {
-  color: #444;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 10px 0 30px 0;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 20px;
-}
-.login button {
-  width: 100%;
-  height: 100%;
-  padding: 10px 10px;
-  background: #2196F3;
-  color: #fff;
-  display: block;
-  border: none;
-  margin-top: 20px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  max-height: 60px;
-  border: 0px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 2px 2px;
-  transform: rotateZ(0deg);
-  transition: all 0.1s ease-out;
-  border-bottom-width: 7px;
-}
-.login button .spinner {
-  display: block;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  border: 4px solid #ffffff;
-  border-top-color: rgba(255, 255, 255, 0.3);
-  border-radius: 100%;
-  left: 50%;
-  top: 0;
-  opacity: 0;
-  margin-left: -20px;
-  margin-top: -20px;
-  animation: spinner 0.6s infinite linear;
-  transition: top 0.3s 0.3s ease, opacity 0.3s 0.3s ease, border-radius 0.3s ease;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
-}
-.login:not(.loading) button:hover {
-  box-shadow: 0px 1px 3px #2196F3;
-}
-.login:not(.loading) button:focus {
-  border-bottom-width: 4px;
-}
-
-footer {
-  display: block;
-  padding-top: 50px;
-  text-align: center;
-  color: #ddd;
-  font-weight: normal;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-  font-size: 0.8em;
-}
-footer a, footer a:link {
-  color: #fff;
-  text-decoration: none;
-}
-
- </style>
 </head>
-<body>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js">
- var working = false;
- $('.login').on('submit', function(e) {
-   e.preventDefault();
-   if (working) return;
-   working = true;
-   var $this = $(this),
-     $state = $this.find('button > .state');
-   $this.addClass('loading');
-   $state.html('Authenticating');
-   setTimeout(function() {
-     $this.addClass('ok');
-     $state.html('Welcome back!');
-     setTimeout(function() {
-       $state.html('Log in');
-       $this.removeClass('ok loading');
-       working = false;
-     }, 4000);
-   }, 3000);
- });</script>
-</head>
+<style>
 
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+#login {
+    padding-top: 50px
+}
+#login .form-wrap {
+    width: 30%;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #1fa67b;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#login .form-group {
+    margin-bottom: 25px;
+}
+#login .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#login .checkbox.show:before {
+    content: '\e013';
+    color: #1fa67b;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+#login .checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+#login .checkbox .label {
+    color: #6d6d6d;
+    font-size: 13px;
+    font-weight: normal;
+}
+#login .btn.btn-custom {
+    font-size: 14px;
+	margin-bottom: 20px;
+}
+#login .forget {
+    font-size: 13px;
+	text-align: center;
+	display: block;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+    color: #212121;
+}
+.btn-custom {
+    color: #fff;
+	background-color: #1fa67b;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}</style>
 <body>
-  <div class="wrapper">
-  <form class="login">
-    <p class="title">Log in</p>
-    <input type="text" placeholder="Username" name="j_username" autofocus/>
-    <i class="fa fa-user"></i>
-    <input type="password" placeholder="Password" name="j_password" />
-    <i class="fa fa-key"></i>
-    <a href="#">Forgot your password?</a>
-    <button>
-      <i class="spinner"></i>
-      <span class="state">Log in</span>
-    </button>
-  </form>
-  </p>
-</div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript">
+function showPassword() {
+    
+    var key_attr = $('#key').attr('type');
+    
+    if(key_attr != 'text') {
+        
+        $('.checkbox').addClass('show');
+        $('#key').attr('type', 'text');
+        
+    } else {
+        
+        $('.checkbox').removeClass('show');
+        $('#key').attr('type', 'password');
+        
+    }
+    
+}
+</script>
+<section id="login">
+    <div class="container">
+    	<div class="row">
+    	    <div class="col-xs-12">
+        	    <div class="form-wrap">
+                <h1>Log in with your email account</h1>
+                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Password</label>
+                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="checkbox">
+                            <span class="character-checkbox" onclick="showPassword()"></span>
+                            <span class="label">Show password</span>
+                        </div>
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+                    </form>
+                    <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
+                    <hr>
+        	    </div>
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+
+<div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">×</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title">Recovery password</h4>
+			</div>
+			<div class="modal-body">
+				<p>Type your email account</p>
+				<input type="email" name="recovery-email" id="recovery-email" class="form-control" autocomplete="off">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-custom">Recovery</button>
+			</div>
+		</div> <!-- /.modal-content -->
+	</div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
 
 </body>
+    
+  
 </html>
