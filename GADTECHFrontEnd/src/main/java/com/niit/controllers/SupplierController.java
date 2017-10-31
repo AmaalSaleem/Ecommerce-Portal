@@ -22,11 +22,10 @@ public class SupplierController
 	SupplierDao supplierDAO;
 	
 	
-	 @RequestMapping(value="/AddSupplier",method=RequestMethod.POST)
-	   public String addSupplier(@RequestParam("splrId") int splrId,@RequestParam("splrName") String splrName,@RequestParam("splrAdd") String splrAddress,Model m)
+	 @RequestMapping(value="/admin/AddSupplier",method=RequestMethod.POST)
+	   public String addSupplier(@RequestParam("splrName") String splrName,@RequestParam("splrAdd") String splrAddress,Model m)
 	   {
 		 Supplier supplier=new Supplier();
-		 supplier.setSplrId(splrId);
 		 supplier.setSplrName(splrName);
 		 supplier.setSplrAddress(splrAddress);
 	    
@@ -34,9 +33,9 @@ public class SupplierController
 	         
 	        List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
 	        m.addAttribute("SupplierList",listSupplier);
-	        return "redirect:/supplier";
+	        return "redirect:/admin/supplier";
 	   }
-	 @RequestMapping(value="/supplier",method=RequestMethod.GET)
+	 @RequestMapping(value="/admin/supplier",method=RequestMethod.GET)
      public String showSupplier(Model m)
      {
          Supplier supplier=new Supplier();
@@ -47,7 +46,7 @@ public class SupplierController
          return "Supplier";
      }
 	 
-	 @RequestMapping(value="deleteSupplier/{splrId}",method=RequestMethod.GET)
+	 @RequestMapping(value="admin/deleteSupplier/{splrId}",method=RequestMethod.GET)
 	    public String deleteSupplier(@PathVariable("splrId")int splrId,Model m)
 	    {
 		 Supplier supplier=supplierDAO.getSupplier(splrId);
@@ -58,8 +57,35 @@ public class SupplierController
 	        Supplier supplier1=new Supplier();
 	        m.addAttribute(supplier1);
 	         
+	        return "redirect: /admin/supplier";
+	    }
+	 @RequestMapping(value="admin/updateS",method=RequestMethod.GET)
+	    public String updateCategory(@RequestParam("splrId") int splrId,Model m)
+	    {
+		 Supplier supplier=supplierDAO.getSupplier(splrId);
+	        m.addAttribute("sup",supplier);
+	         
+	        List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
+	        m.addAttribute("supplierList",listSupplier);
+	        return "UpdateSupplier";
+	    }
+	   
+	   @RequestMapping(value="/admin/updateSupplier",method=RequestMethod.POST)
+	    public String updateNewSup(@RequestParam("splrId") int splrId,@RequestParam("splrName") String splrName,@RequestParam("splrAdd") String splrAddress,Model m)
+	    {
+		   Supplier supplier=supplierDAO.getSupplier(splrId);
+		   supplier.setSplrName(splrName);
+		   supplier.setSplrAddress(splrAddress);
+	         
+		   supplierDAO.updateSupplier(supplier);
+	         
+	        List<Supplier> supplierList=supplierDAO.retrieveSupplier();
+	        m.addAttribute("supplierList",supplierList);
+	         
 	        return "redirect:/supplier";
 	    }
+	     
+	
 	
 
 }

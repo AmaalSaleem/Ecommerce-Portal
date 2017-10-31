@@ -6,22 +6,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+body
+{
+    background: url('./resources/registration-background.jpg') fixed;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+} 
+.fullscreen_bg
+ {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat:repeat;
+  }
+
+
+</style>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
 <div class="container">
-	<div class="col-lg-12 well">
 	<div class="row">
 				<form action="reg" method="post">
 					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-6 form-group">
+							<div class="form-group">
 								<label>Name</label>
-								<input type="text" placeholder="Enter Name Here.." name="Name" class="form-control">
-							</div>
-						</div>					
+								<input type="text" placeholder="Enter Name Here..." name="Name" class="form-control">
+							</div>					
 						<div class="form-group">
 							<label>Address</label>
-							<textarea placeholder="Enter Address Here.." name="Address" rows="3" class="form-control"></textarea>
+							<input type="text" placeholder="Enter Address Here.." name="Address" rows="3" class="form-control"></textarea>
 						</div>	
 						<div class="form-group">
 						<label>Phone Number</label>
@@ -31,12 +50,12 @@
 						<input type="text" placeholder="Enter Email Address Here.." name="Email" class="form-control">
 					</div>
 						
-						<div class="row">
-							<div class="col-sm-4 form-group">
+						
+							<div class="form-group">
 								<label>Country</label>
 								<input type="text" placeholder="Enter Country Name Here.." name="Country" class="form-control">
 							</div>			
-						</div>		
+							
 						<div class="form-group">
 						<label>Password</label>
 						<input type="password" placeholder="Enter password...." name="Password" class="form-control">
@@ -52,7 +71,6 @@
 					</div>
 				</form> 
 				</div>
-	</div>
 	</div>
 </body>
 </html>

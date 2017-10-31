@@ -21,11 +21,10 @@ public class CategoryController
 	    CategoryDao categoryDAO;
 	     
 	     
-	   @RequestMapping(value="/AddCategory",method=RequestMethod.POST)
-	    public String addCategory(@RequestParam("catgId") int catgId,@RequestParam("catgName") String catgName,@RequestParam("catgDescrip") String catgDescrip,Model m)
+	   @RequestMapping(value="/admin/AddCategory",method=RequestMethod.POST)
+	    public String addCategory(@RequestParam("catgName") String catgName,@RequestParam("catgDescrip") String catgDescrip,Model m)
 	    {
 	        Category category=new Category();
-	        category.setCatgId(catgId);
 	        category.setCatgName(catgName);
 	        category.setCatgDescrip(catgDescrip);
 	         
@@ -34,11 +33,11 @@ public class CategoryController
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
 	         
-	        return "redirect:/category";
+	        return "redirect:/admin/category";
 
 	    }
 	   
-	   @RequestMapping(value="/category",method=RequestMethod.GET)
+	   @RequestMapping(value="/admin/category",method=RequestMethod.GET)
        public String showCategory(Model m)
        {
            Category category=new Category();
@@ -50,7 +49,7 @@ public class CategoryController
        }
 	   
 	   
-	   @RequestMapping(value="deleteCategory/{catgId}",method=RequestMethod.GET)
+	   @RequestMapping(value="admin/deleteCategory/{catgId}",method=RequestMethod.GET)
 	    public String deleteCategory(@PathVariable("catgId")int catgId,Model m)
 	    {
 	        Category category=categoryDAO.getCategory(catgId);
@@ -61,20 +60,37 @@ public class CategoryController
 	        Category category1=new Category();
 	        m.addAttribute(category1);
 	         
-	        return "redirect:/category";
+	        return "redirect:/admin/category";
 	    }
 	   
 	   
-	   @RequestMapping(value="updateCategory/{catgId}",method=RequestMethod.GET)
-	    public String updateCategory(@PathVariable("catgId") int catgId,Model m)
+	   @RequestMapping(value="admin/updateC",method=RequestMethod.GET)
+	    public String updateCategory(@RequestParam("catgId") int catgId,Model m)
 	    {
 	        Category category=categoryDAO.getCategory(catgId);
-	        m.addAttribute(category);
+	        m.addAttribute("cat",category);
 	         
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
-	        return "updateCategory";
+	        return "UpdateCategory";
 	    }
+	   
+	   @RequestMapping(value="/admin/updateCategory",method=RequestMethod.POST)
+	    public String updateNewCatg(@RequestParam("catgId") int catgId,@RequestParam("catgName") String catgName,@RequestParam("catgDescrip") String catgDescrip,Model m)
+	    {
+		   Category category=categoryDAO.getCategory(catgId);
+	        category.setCatgName(catgName);
+	        category.setCatgDescrip(catgDescrip);
+	         
+	        categoryDAO.updateCategory(category);
+	         
+	        List<Category> listCategory=categoryDAO.retrieveCategory();
+	        m.addAttribute("categoryList",listCategory);
+	         
+	        return "redirect:/admin/category";
+	    }
+	     
+	   
 	     
 	   
 	

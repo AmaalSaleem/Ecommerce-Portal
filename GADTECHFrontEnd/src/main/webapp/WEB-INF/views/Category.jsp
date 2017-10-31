@@ -9,50 +9,30 @@
 </head>
 <jsp:include page="Header.jsp"></jsp:include>
 <body>
-<form action="AddCategory" method="post">
-<table cellspacing="2" align="center">
-<tr>
-     <td colspan="2">Category Module</td>
-</tr>
-<tr>
-     <td>Category ID</td>
-     <td><input name="catgId"/></td>
-</tr>
-<tr>
-     <td>Category Name</td>
-     <td><input name="catgName"/></td>
-</tr>
-<tr>
-     <td>Category Description</td>
-     <td><input name="catgDescrip"/></td>
-</tr>
-<tr>
-	 <td colspan="2">
-	 <center><input type="submit" value="Insert"/></center>
-	 </td>
-</tr>
-</table>
-</form>
-
-<table cellspacing="2" align="center">
-<tr bgcolor="gray">
-	<td>Category ID</td>
-	<td>Category Name</td>
-	<td>Category Description</td>
-	<td>Operation</td>
-</tr>
+<div class="container">
+ <center><h2>Category List</h2></center>
+ <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Category ID</th>
+	<th>Category Name</th>
+	<th>Category Description</th>
+	<th>Operation</th>
+    </tr>
+    </thead>
+    <tbody>
 <c:forEach items="${categoryList}" var="category">
-	<tr bgcolor="cyan">
+	<tr>
 		<td>${category.catgId}</td>
 		<td>${category.catgName}</td>
 		<td>${category.catgDescrip}</td>
 		<td>
 			<a href="<c:url value="deleteCategory/${category.catgId}"/>">DELETE</a>/
-			<a href="<c:url value="updateCategory/${category.catgId}"/>">UPDATE</a>
+			<a href="<c:url value="updateC?catgId=${category.catgId}"/>">UPDATE</a>
 		</td>
 	</tr>
 </c:forEach>
-
+</tbody>
 </table>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd 
 		http://www.springframework.org/schema/security 
@@ -21,7 +20,7 @@
 			 username-parameter="j_username"
 			 authentication-failure-url="/error" 
 			default-target-url="/"
-			login-page="/Login" />
+			login-page="/login" />
 			
 
 		<security:logout

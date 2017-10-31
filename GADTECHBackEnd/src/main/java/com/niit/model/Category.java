@@ -1,12 +1,24 @@
 package com.niit.model;
 
-import javax.persistence.*;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
 
 @Entity
 @Table
 public class Category 
 {
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	int catgId;
 	
 	
@@ -14,7 +26,8 @@ public class Category
 	String catgName;
 	String catgDescrip;
 	
-	
+	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")
+	private Set<Product> product;
 	
 	
 	public int getCatgId() {
@@ -34,6 +47,12 @@ public class Category
 	}
 	public void setCatgDescrip(String catgDescrip) {
 		this.catgDescrip = catgDescrip;
+	}
+	public Set<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Set<Product> product) {
+		this.product = product;
 	}
 	
 

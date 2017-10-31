@@ -31,11 +31,7 @@ public class HomeController
 	{
 		return "Login";
 	}
-	@RequestMapping("/product")
-	public String product()
-	{
-		return "Product";
-	}
+
 	
 
 }

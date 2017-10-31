@@ -7,52 +7,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<jsp:include page="Header.jsp"></jsp:include>
 <body>
-<form action="AddSupplier" method="post">
-<table cellspacing="2" align="center">
-<tr>
-<center> <td colspan="2">Supplier Module</td></center>
-   
-</tr>
-<tr>
-     <td>Supplier ID</td>
-     <td><input name="splrId"/></td>
-</tr>
-<tr>
-     <td>Supplier Name</td>
-     <td><input name="splrName"/></td>
-</tr>
-<tr>
-     <td>Supplier Address Description</td>
-     <td><input name="splrAdd"/></td>
-</tr>
-<tr>
-	 <td colspan="2">
-	 <center><input type="submit" value="Insert"/></center>
-	 </td>
-</tr>
-</table>
-</form>
-
-<table cellspacing="2" align="center">
-<tr bgcolor="gray">
-	<td>Supplier ID</td>
-	<td>Supplier Name</td>
-	<td>Supplier Address</td>
-	<td>Operation</td>
-</tr>
-<c:forEach items="${supplierList}" var="supplier">
-	<tr bgcolor="cyan">
+<div class="container">
+ <center><h2>Supplier List</h2></center>
+ <div class="table-responsive">          
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Supplier ID</th>
+	<th>Supplier Name</th>
+	<th>Supplier Address</th>
+	<th>Operation</th>
+	</tr>
+	</thead>
+    <tbody>
+    <c:forEach items="${supplierList}" var="supplier">
+    <tr>
 		<td>${supplier.splrId}</td>
 		<td>${supplier.splrName}</td>
 		<td>${supplier.splrAddress}</td>
 		<td>
-			<a href="<c:url value="deleteCategory/${supplier.splrId}"/>">DELETE</a>/
-			<a href="<c:url value="updateCategory/${supplier.splrId}"/>">UPDATE</a>
+			<a href="<c:url value="deleteSupplier/${supplier.splrId}"/>">DELETE</a>/
+			<a href="<c:url value="updateS?splrId=${supplier.splrId}"/>">UPDATE</a>
 		</td>
 	</tr>
-</c:forEach>
-
+	</c:forEach>
+</tbody>
 </table>
+</div>
+</div>
 </body>
 </html>

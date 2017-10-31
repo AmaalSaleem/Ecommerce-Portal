@@ -1,11 +1,22 @@
 package com.niit.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
 @Table
 public class Supplier
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int splrId;
+	
+	String splrName,splrAddress;
+	
+	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="supplier")
+	private Set<Product> product;
+	
 	public int getSplrId() {
 		return splrId;
 	}
@@ -30,11 +41,15 @@ public class Supplier
 		this.splrAddress = splrAddress;
 	}
 
-	@Id
-	int splrId;
-	
-	String splrName,splrAddress;
-	
+	public Set<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(Set<Product> product) {
+		this.product = product;
+	}
+
+
 	
 	
 	
