@@ -29,8 +29,10 @@
     <input class="form-control" type="text" name="catgDescrip" required/>
     <br>
     <br>
+    <center>
     <button class="btn btn-lg btn-primary" type="submit">Save</button>
     <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+    </center>
     </form>
   </div>
   
@@ -42,8 +44,10 @@
   <input class="form-control" type="text" name="splrName" required/>
   <h3 class="input-title">Supplier Address</h3>
   <input class="form-control" type="text" name="splrAdd" required/>
-  <button class="btn btn-lg btn-primary" type="submit">Save</button>
-  <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+  <center>
+    <button class="btn btn-lg btn-primary" type="submit">Save</button>
+    <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+    </center>
   </form>
   </div>
   
@@ -87,8 +91,10 @@
     <td><input class="form-control" type="file" name="pimage" accept="image/*"></td>
     </tr>
 </div>
+   <center>
     <button class="btn btn-lg btn-primary" type="submit">Save</button>
     <button class="btn btn-lg btn-primary" type="reset">Cancel</button>
+    </center>
 </form>
   </div>
    <div id="update" class="tab-pane fade">

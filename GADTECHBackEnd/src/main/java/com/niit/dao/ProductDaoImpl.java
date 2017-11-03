@@ -57,6 +57,7 @@ public class ProductDaoImpl implements ProductDao
 		return listProduct;
 	}
 	
+	
 	@Transactional
 
 	public boolean updateProduct(Product product)
@@ -79,6 +80,14 @@ public class ProductDaoImpl implements ProductDao
 		Product product=(Product)session.get(Product.class, productId);
 		session.close();
 		return product;
+	}
+
+	public List<Product> retrieveProductByCat(int cid) {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Product where CID="+cid);
+		List<Product> listProduct=query.list();
+		session.close();
+		return listProduct;
 	}
 
 }

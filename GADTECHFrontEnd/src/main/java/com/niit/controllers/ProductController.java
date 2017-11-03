@@ -120,7 +120,7 @@ public class ProductController
 	    }
 	    
 	    @RequestMapping(value="admin/updateP",method=RequestMethod.GET)
-	    public String updateCategory(@RequestParam("productId") int productId,Model m)
+	    public String updateProduct(@RequestParam("productId") int productId,Model m)
 	    {
 	    	Product product=productDAO.getProduct(productId);
 	    	m.addAttribute("prod",product);
@@ -132,6 +132,22 @@ public class ProductController
 		    
 		    return "UpdateProduct";
 	    }
+	    
+	    
+	    @RequestMapping(value="/productList",method=RequestMethod.GET)
+	    public String productListByCat(@RequestParam("cid") int cId,Model m)
+	    {
+	    	
+	    	
+	    	m.addAttribute("categoryList",categoryDao.retrieveCategory());
+	    	
+	    	List<Product> listProduct=productDAO.retrieveProductByCat(cId);
+		    m.addAttribute("productList",listProduct);
+		    
+		    return "ProductByCid";
+	    }
+	    
+	    
 	    @RequestMapping(value="/admin/updateProduct",method=RequestMethod.POST)
 	    public String newUpdateProd(@RequestParam("productId") int productId,@RequestParam("productName") String productName,@RequestParam("productDesc") String productDesc,@RequestParam("stock") int stock,@RequestParam("sup") int sid,@RequestParam("cat") int cid,@RequestParam("price") int price,@RequestParam("pimage")MultipartFile fileDetail,Model m)
 	    {
