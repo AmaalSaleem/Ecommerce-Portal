@@ -19,8 +19,6 @@ public class SupplierDaoImpl implements SupplierDao
 	SessionFactory sessionFactory;
 	
 	@Transactional
-
-
 	public boolean addSupplier(Supplier supplier) 
 	{
 		try

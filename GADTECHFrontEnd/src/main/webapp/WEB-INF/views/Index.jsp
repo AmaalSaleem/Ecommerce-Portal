@@ -20,15 +20,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="./resources/business-gadgets.jpg" alt="business gadgets" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/lenovo-ideapad-110s-7184-010.jpg" alt="laptop" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="./resources/iphone8colors.jpg" alt="iphone8"  style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/gsocho-ny-19-jg.jpg" alt="mobile"  style="width:100%;">
       </div>
     
       <div class="item">
-        <img src="./resources/Portable-Raspberry-Pi-1.jpg" alt="raspberry pi" style="width:100%;">
+        <img src="${pageContext.request.contextPath}/resources/galaxy-s7_062316060827.jpg" alt="mobil1" style="width:100%;">
       </div>
     </div>
 
@@ -43,7 +43,7 @@
     </a>
   </div>
   
-
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 
 </html>

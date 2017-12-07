@@ -1,43 +1,78 @@
 package com.niit.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.ManyToAny;
+import org.springframework.stereotype.Component;
 
+import javassist.SerialVersionUID;
 
-public class Cart 
+@Component
+@Entity
+@Table
+public class Cart implements Serializable
 {
+	private static final long SerialVersionUID=1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int cartID;
 	
-	private String cartProdName;
-	private int cartProdID;
-	
-	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="userMailID")
 	private User cartUserDetails;
 	
 	
 	
-	private Double cartPrice;
 	private int cartQnty;
-	private String cartImg;
 	
-	
-	public Cart(int cartID ,int cartProdID ,User cartUserDetails, Double cartPrice, int cartQnty )
-	{
-		this.cartID=cartID;
-		this.cartProdID=cartProdID;
-		this.cartUserDetails=cartUserDetails;
-		this.cartPrice=cartPrice;
-		this.cartQnty=cartQnty;
-		
+	@ManyToOne
+	@JoinColumn(name="PRODUCT_ID")
+	private Product product;
+	public int getCartID() {
+		return cartID;
 	}
+
+	public void setCartID(int cartID) {
+		this.cartID = cartID;
+	}
+
+	public User getCartUserDetails() {
+		return cartUserDetails;
+	}
+
+	public void setCartUserDetails(User cartUserDetails) {
+		this.cartUserDetails = cartUserDetails;
+	}
+
+	public int getCartQnty() {
+		return cartQnty;
+	}
+
+	public void setCartQnty(int cartQnty) {
+		this.cartQnty = cartQnty;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+
+	
+	
 }

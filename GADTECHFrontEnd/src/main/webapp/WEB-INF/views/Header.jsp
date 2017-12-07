@@ -21,7 +21,7 @@
      
        <c:if test="${pageContext.request.userPrincipal.name  != 'amalslm533@gmail.com'}">
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category List
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">All Category
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
          <c:forEach items="${categoryList}" var="category">
@@ -36,6 +36,15 @@
                         </c:if>
                         </ul>
                         
+                        
+                        
+                        
+          
+            
+            
+     
+            
+            
                         
  <ul class="nav navbar-nav navbar-right">
  <li>  
@@ -54,6 +63,11 @@
 <div class="nav navbar-nav navbar-right">
 <li><a href='<c:url value="/j_spring_security_logout"/>'>Logout</a></li></div>
 </c:if>
+  <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'amalslm533@gmail.com'}">
+            <li>       
+              <a href="Cart?status=">Cart <i class="fa fa-shopping-cart" ></i></a> 
+            </li> 
+            </c:if>
 </li> 
   </ul>
      

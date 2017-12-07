@@ -11,6 +11,7 @@
 <body>
 <div class="container">
 <center><h2>Product List</h2></center>
+<h2 style="color: red;">${status}</h2>
 <div class="table-responsive">          
   <table class="table table-bordered">
     <thead>
@@ -52,5 +53,6 @@
   </table>
   </div>
 </div>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

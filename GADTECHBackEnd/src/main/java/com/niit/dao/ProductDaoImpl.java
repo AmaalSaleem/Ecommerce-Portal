@@ -19,7 +19,6 @@ public class ProductDaoImpl implements ProductDao
 	SessionFactory sessionFactory;
 
 	@Transactional
-
 	public boolean addProduct(Product product)
 	{
 		try

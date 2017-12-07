@@ -9,7 +9,7 @@
 <style type="text/css">
  body
 {
-    background: url('./resources/login.jpg') fixed;
+    background: url('./resources/background.jpg') fixed;
     background-size: cover;
     padding: 0;
     margin: 0;
@@ -49,10 +49,10 @@
 				<center><h2><font color="white" >Login Here</font></h2></center>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    <input type="email" name="j_username" id="email" class="form-control input-lg" placeholder="Email Address">
+                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="j_username" id="email" class="form-control input-lg" placeholder="Email Address"required>
 				</div>
 				<div class="form-group">
-                    <input type="password" name="j_password" id="password" class="form-control input-lg" placeholder="Password">
+                    <input type="password" name="j_password" id="password" class="form-control input-lg" placeholder="Password"required>
 				</div>
 				<span class="button-checkbox">
 					<button type="button" class="btn" data-color="info">Remember Me</button>
@@ -70,7 +70,12 @@
 </div>
 
 </div>
-</div>
+
+
+<br>
+<br>
+
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 
 </html>

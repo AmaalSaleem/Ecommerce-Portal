@@ -8,5 +8,6 @@ public interface UserDao
 {
 	public boolean insertUser(User user);
 	public List<User> retrieveUser(); 
+	public User getUser(String username);
 
 }

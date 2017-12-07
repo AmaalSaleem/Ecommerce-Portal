@@ -9,10 +9,11 @@
 <style type="text/css">
 body
 {
-    background: url('./resources/registration-background.jpg') fixed;
+    background: url('./resources/windows-central-background.jpg') fixed;
     background-size: cover;
     padding: 0;
     margin: 0;
+   
 } 
 .fullscreen_bg
  {
@@ -33,32 +34,32 @@ body
 <div class="container">
 	<div class="row">
 				<form action="reg" method="post">
-					<div class="col-sm-12">
+					<div class="col-sm-12" >
 							<div class="form-group">
-								<label>Name</label>
-								<input type="text" placeholder="Enter Name Here..." name="Name" class="form-control">
+								<label><font color="white">Name</font></label>
+								<input type="text" placeholder="Enter Name Here..." pattern="[a-zA-Z]{1,15}" title="Special Characters not allowed"  name="Name" class="form-control"required>
 							</div>					
 						<div class="form-group">
-							<label>Address</label>
-							<input type="text" placeholder="Enter Address Here.." name="Address" rows="3" class="form-control"></textarea>
+							<label><font color="white">Address</font></label>
+							<input type="text" placeholder="Enter Address Here.." name="Address" rows="3" class="form-control"required></textarea>
 						</div>	
 						<div class="form-group">
-						<label>Phone Number</label>
-						<input type="text" placeholder="Enter Phone Number Here.." name="Phone" class="form-control">
+						<label><font color="white">Phone Number</font></label>
+						<input type="text" placeholder="Enter Phone Number Here.." pattern="[789][0-9]{9}" name="Phone" class="form-control" maxlength="10"title="Indian phone no must start with 7,8 or 9" required>
 						</div>	<div class="form-group">
-						<label>Email Address</label>
-						<input type="text" placeholder="Enter Email Address Here.." name="Email" class="form-control">
+						<label><font color="white">Email Address</font></label>
+						<input type="text" placeholder="Enter Email Address Here.." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="eg:amal@gmail.com" name="Email" class="form-control"required>
 					</div>
 						
 						
 							<div class="form-group">
-								<label>Country</label>
-								<input type="text" placeholder="Enter Country Name Here.." name="Country" class="form-control">
+								<label><font color="white">Country</font></label>
+								<input type="text" placeholder="Enter Country Name Here.." name="Country" class="form-control"required>
 							</div>			
 							
 						<div class="form-group">
-						<label>Password</label>
-						<input type="password" placeholder="Enter password...." name="Password" class="form-control">
+						<label><font color="white">Password</font></label>
+						<input type="password" placeholder="Enter password...." pattern=".{6,}" title="Six or more characters" name="Password" class="form-control"required>
 						</div>			
 						
 						
@@ -69,8 +70,15 @@ body
 					</center>
 							
 					</div>
+					
 				</form> 
+				<br>
+	<br><br>
+	<br>
 				</div>
 	</div>
+	
+	
+	<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

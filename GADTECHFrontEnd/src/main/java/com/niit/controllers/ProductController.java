@@ -37,7 +37,7 @@ public class ProductController
 	    SupplierDao supplierDao;
 	     
 	    @RequestMapping(value="/admin/product",method=RequestMethod.GET)
-	    public String showProduct(Model m)
+	    public String showProduct(@RequestParam("status")String status,Model m)
 	    {
 	       
 	        m.addAttribute("categoryList",categoryDao.retrieveCategory());
@@ -46,6 +46,21 @@ public class ProductController
 	        m.addAttribute("productList",listProducts);
 	        return "Product";
 	    }
+	    
+	    
+	    @RequestMapping(value="/productList",method=RequestMethod.GET)
+	    public String productListByCat(@RequestParam("cid") int cId,Model m)
+	    {
+	    	
+	    	
+	    	m.addAttribute("categoryList",categoryDao.retrieveCategory());
+	    	
+	    	List<Product> listProduct=productDAO.retrieveProductByCat(cId);
+		    m.addAttribute("productList",listProduct);
+		    
+		    return "ProductList";
+	    }
+	    
 	   	    @RequestMapping(value="/admin/InsertProduct",method=RequestMethod.POST)
 	    public String insertProduct(@RequestParam("productName") String productName,@RequestParam("productDesc") String productDesc,@RequestParam("stock") int stock,@RequestParam("sup") int sid,@RequestParam("cat") int cid,@RequestParam("price") int price,@RequestParam("pimage")MultipartFile fileDetail,Model m)
 	    {
@@ -92,7 +107,7 @@ public class ProductController
 	         
 	        Product product1=new Product();
 	        m.addAttribute(product1);
-	         
+	        m.addAttribute("status", "Product Added Successfully...");
 	        return "redirect:/admin/product";
 	    }
 	     
@@ -109,7 +124,15 @@ public class ProductController
 	    public String deleteProduct(@PathVariable("productId")int productId,Model m)
 	    {
 	        Product product=productDAO.getProduct(productId);
+	        try
+	        {
 	        productDAO.deleteProduct(product);
+	        m.addAttribute("status", "Product Deleted Successfully...");
+	        }
+	        catch(Exception e)
+	        {
+	        	 m.addAttribute("status", "Product Already in cart..You cant delete it..");
+	        }
 	        List<Product> listProduct=productDAO.retrieveProduct();
 	        m.addAttribute("productList",listProduct);
 	         
@@ -134,19 +157,7 @@ public class ProductController
 	    }
 	    
 	    
-	    @RequestMapping(value="/productList",method=RequestMethod.GET)
-	    public String productListByCat(@RequestParam("cid") int cId,Model m)
-	    {
-	    	
-	    	
-	    	m.addAttribute("categoryList",categoryDao.retrieveCategory());
-	    	
-	    	List<Product> listProduct=productDAO.retrieveProductByCat(cId);
-		    m.addAttribute("productList",listProduct);
-		    
-		    return "ProductByCid";
-	    }
-	    
+	  
 	    
 	    @RequestMapping(value="/admin/updateProduct",method=RequestMethod.POST)
 	    public String newUpdateProd(@RequestParam("productId") int productId,@RequestParam("productName") String productName,@RequestParam("productDesc") String productDesc,@RequestParam("stock") int stock,@RequestParam("sup") int sid,@RequestParam("cat") int cid,@RequestParam("price") int price,@RequestParam("pimage")MultipartFile fileDetail,Model m)
@@ -194,7 +205,22 @@ public class ProductController
 	         
 	        Product product1=new Product();
 	        m.addAttribute(product1);
+	        m.addAttribute("status", "Product Updated Successfully...");
 	         
-	        return "redirect:/product";
+	        return "redirect:/admin/product";
+	    }
+	    
+	    
+	    
+	    @RequestMapping(value="/productDescp",method=RequestMethod.GET)
+	    public String productView(@RequestParam("pid") int pid,@RequestParam("error") String error,Model m)
+	    {
+	    	m.addAttribute("categoryList",categoryDao.retrieveCategory());
+	    	
+	    	Product p=productDAO.getProduct(pid);
+		    m.addAttribute("product",p);
+		    m.addAttribute("error", error);
+		    
+		    return "ProductDescp";
 	    }
 }

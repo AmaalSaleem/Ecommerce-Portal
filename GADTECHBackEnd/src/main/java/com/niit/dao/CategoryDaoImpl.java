@@ -20,8 +20,14 @@ public class CategoryDaoImpl implements CategoryDao
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	@Transactional
+	
+	public CategoryDaoImpl(SessionFactory sessionFactory) {
+		super();
+		this.sessionFactory = sessionFactory;
+	}
 
+	
+	@Transactional
 	public boolean addCategory(Category category) 
 	{
 		try
@@ -46,7 +52,6 @@ public class CategoryDaoImpl implements CategoryDao
 	}
 	
 	@Transactional
-
 	public boolean deleteCategory(Category category) 
 	{
 		 try

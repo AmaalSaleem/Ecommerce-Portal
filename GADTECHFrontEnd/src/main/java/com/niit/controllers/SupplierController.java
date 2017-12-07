@@ -33,16 +33,18 @@ public class SupplierController
 	         
 	        List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
 	        m.addAttribute("SupplierList",listSupplier);
+	        m.addAttribute("status", "Supplier added successfully...");
 	        return "redirect:/admin/supplier";
 	   }
 	 @RequestMapping(value="/admin/supplier",method=RequestMethod.GET)
-     public String showSupplier(Model m)
+     public String showSupplier(@RequestParam("status")String status,Model m)
      {
          Supplier supplier=new Supplier();
          m.addAttribute(supplier);
           
          List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
          m.addAttribute("supplierList",listSupplier);
+         m.addAttribute("status", status);
          return "Supplier";
      }
 	 
@@ -50,14 +52,22 @@ public class SupplierController
 	    public String deleteSupplier(@PathVariable("splrId")int splrId,Model m)
 	    {
 		 Supplier supplier=supplierDAO.getSupplier(splrId);
+		 try
+		 {
 		 supplierDAO.deleteSupplier(supplier);
+		 m.addAttribute("status", "Supplier Deleted Successfully...");
+		 }
+		 catch(Exception e)
+		 {
+			 m.addAttribute("status", "You cant delete this supplier some product already under this supplier...");
+		 }
 	        List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
 	        m.addAttribute("supplierList",listSupplier);
 	         
 	        Supplier supplier1=new Supplier();
 	        m.addAttribute(supplier1);
 	         
-	        return "redirect: /admin/supplier";
+	        return "redirect:/admin/supplier";
 	    }
 	 @RequestMapping(value="admin/updateS",method=RequestMethod.GET)
 	    public String updateCategory(@RequestParam("splrId") int splrId,Model m)
@@ -81,8 +91,9 @@ public class SupplierController
 	         
 	        List<Supplier> supplierList=supplierDAO.retrieveSupplier();
 	        m.addAttribute("supplierList",supplierList);
+	        m.addAttribute("status", "Supplier Upadated Successfully...");
 	         
-	        return "redirect:/supplier";
+	        return "redirect:/admin/supplier";
 	    }
 	     
 	

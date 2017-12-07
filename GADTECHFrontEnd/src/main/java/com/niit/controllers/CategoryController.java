@@ -32,19 +32,20 @@ public class CategoryController
 	         
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
-	         
+	        m.addAttribute("status", "Category Added Successfully...");
 	        return "redirect:/admin/category";
 
 	    }
 	   
 	   @RequestMapping(value="/admin/category",method=RequestMethod.GET)
-       public String showCategory(Model m)
+       public String showCategory(@RequestParam("status")String status,Model m)
        {
            Category category=new Category();
            m.addAttribute(category);
             
            List<Category> listCategory=categoryDAO.retrieveCategory();
            m.addAttribute("categoryList",listCategory);
+           m.addAttribute("status", status);
            return "Category";
        }
 	   
@@ -53,7 +54,16 @@ public class CategoryController
 	    public String deleteCategory(@PathVariable("catgId")int catgId,Model m)
 	    {
 	        Category category=categoryDAO.getCategory(catgId);
+	        
+	        try
+	        {
 	        categoryDAO.deleteCategory(category);
+	        m.addAttribute("status", "Category deleted Successfully...");
+	        }
+	        catch(Exception e)
+	        {
+	        	 m.addAttribute("status", "Some products already under this category...You cant delete this category..");
+	        }
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
 	         
@@ -86,7 +96,7 @@ public class CategoryController
 	         
 	        List<Category> listCategory=categoryDAO.retrieveCategory();
 	        m.addAttribute("categoryList",listCategory);
-	         
+	        m.addAttribute("status", "Category Updated Successfully...");
 	        return "redirect:/admin/category";
 	    }
 	     

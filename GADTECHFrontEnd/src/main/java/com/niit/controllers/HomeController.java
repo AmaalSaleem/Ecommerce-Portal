@@ -18,6 +18,12 @@ public class HomeController
         m.addAttribute("categoryList",categoryDao.retrieveCategory());
 		return "Index";
 	}
+	@RequestMapping("/admin")
+	public String indexAdmin(Model m)
+	{
+        m.addAttribute("categoryList",categoryDao.retrieveCategory());
+		return "Index";
+	}
 	@RequestMapping("/register")
 	public String reg(Model m)
 	{

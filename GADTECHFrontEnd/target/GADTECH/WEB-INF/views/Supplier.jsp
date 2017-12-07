@@ -11,6 +11,7 @@
 <body>
 <div class="container">
  <center><h2>Supplier List</h2></center>
+ <h2 style="color: red;">${status}</h2>
  <div class="table-responsive">          
   <table class="table table-bordered">
     <thead>
